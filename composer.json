@@ -11,7 +11,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "peibin/laravel-nacos": "^1.1",
-        "slowlyo/owl-admin": "^2.1"
+        "slowlyo/owl-admin": "^2.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -19,28 +19,28 @@ final class LongVideoController extends AdminController
 
     public function list(): Page
     {
-        $crud = $this->baseCRUD()->filterTogglable(false)->headerToolbar([
-            $this->createButton(true),
-            ...$this->baseHeaderToolBar(),
-        ])->loadDataOnce(true)->columns([
-            TableColumn::make()->name('id')->label('ID')->sortable(true),
-            TableColumn::make()->name('origin_name')->label('视频原名'),
-            TableColumn::make()->name('stored_name')->label('存储名字'),
-            TableColumn::make()->name('ext')->label('后缀名'),
-            TableColumn::make()->name('size')->label('文件大小'),
-            TableColumn::make()->name('type')->label('原编码类型'),
-            TableColumn::make()->name('origin_url')->label('原文件链接'),
-            TableColumn::make()->name('poster_url')->label('海报/封面链接'),
-            TableColumn::make()->name('m3u8_url')->label('视频播放地址'),
-            TableColumn::make()->name('av_code')->label('番号或视频标识'),
-            TableColumn::make()->name('poster_thumb_url')->label('海报/封面缩略图地址'),
-            TableColumn::make()->name('duration')->label('视频长度秒'),
-            TableColumn::make()->name('status')->label('状态'),
-            TableColumn::make()->name('upload_id')->label('上传日志ID'),
-            TableColumn::make()->name('created_at')->label('创建时间')->type('datetime')->sortable(true),
-            TableColumn::make()->name('updated_at')->label('更新时间')->type('datetime')->sortable(true),
-            $this->rowActions(true),
-        ]);
+        $crud = $this->baseCRUD()
+            ->filterTogglable(false)
+            ->headerToolbar([$this->createButton(true), ...$this->baseHeaderToolBar(),])
+            ->loadDataOnce(true)
+            ->columns([
+                TableColumn::make()->name('id')->label('ID')->sortable(true),
+                TableColumn::make()->name('origin_name')->label('视频原名'),
+                TableColumn::make()->name('stored_name')->label('存储名字'),
+                TableColumn::make()->name('ext')->label('后缀名'),
+                TableColumn::make()->name('size')->label('文件大小'),
+                TableColumn::make()->name('type')->label('原编码类型'),
+                TableColumn::make()->name('origin_url')->label('原文件链接'),
+                TableColumn::make()->name('poster_url')->label('海报/封面链接'),
+                TableColumn::make()->name('m3u8_url')->label('视频播放地址'),
+                TableColumn::make()->name('av_code')->label('番号/视频标识'),
+                TableColumn::make()->name('poster_thumb_url')->label('海报/封面缩略图地址'),
+                TableColumn::make()->name('duration')->label('视频长度秒'),
+                TableColumn::make()->name('status')->label('状态'),
+                TableColumn::make()->name('created_at')->label('创建时间')->type('datetime')->sortable(true),
+                TableColumn::make()->name('updated_at')->label('更新时间')->type('datetime')->sortable(true),
+                $this->rowActions(true),
+            ]);
 
         return $this->baseList($crud);
     }
@@ -60,7 +60,6 @@ final class LongVideoController extends AdminController
             TextControl::make()->name('poster_thumb_url')->label('海报/封面缩略图地址'),
             TextControl::make()->name('duration')->label('视频长度秒'),
             TextControl::make()->name('status')->label('状态'),
-            TextControl::make()->name('upload_id')->label('上传日志ID'),
         ]);
     }
 
@@ -80,7 +79,6 @@ final class LongVideoController extends AdminController
             TextControl::make()->static(true)->name('poster_thumb_url')->label('海报/封面缩略图地址'),
             TextControl::make()->static(true)->name('duration')->label('视频长度秒'),
             TextControl::make()->static(true)->name('status')->label('状态'),
-            TextControl::make()->static(true)->name('upload_id')->label('上传日志ID')->readOnly(true),
             TextControl::make()->static(true)->name('created_at')->label('创建时间'),
             TextControl::make()->static(true)->name('updated_at')->label('更新时间'),
         ]);
