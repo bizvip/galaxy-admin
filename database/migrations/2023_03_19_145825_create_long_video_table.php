@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('long_video', function (Blueprint $table) {
@@ -19,7 +14,7 @@ return new class extends Migration {
             $table->string('stored_name', 200)->unique()->comment('存储名字')->nullable(false);
             $table->string('ext', 10)->comment('后缀名')->nullable(false);
             $table->unsignedBigInteger('size')->comment('文件大小')->nullable(false);
-            $table->unsignedTinyInteger('type')->comment('原编码类型')->nullable(false);
+            $table->string('type', 20)->comment('原编码类型')->nullable(false);
             $table->string('origin_url')->comment('原文件链接')->nullable(false);
             $table->string('poster_url')->comment('海报/封面链接')->nullable(false);
             $table->string('m3u8_url')->comment('视频播放地址')->nullable(false);
@@ -34,11 +29,6 @@ return new class extends Migration {
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('long_video');

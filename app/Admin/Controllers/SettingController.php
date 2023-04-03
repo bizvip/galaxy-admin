@@ -1,32 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Admin\Controllers;
 
 use Illuminate\Http\Request;
-use Slowlyo\OwlAdmin\Renderers\Tab;
-use Slowlyo\OwlAdmin\Renderers\Tabs;
+use Slowlyo\OwlAdmin\Controllers\AdminController;
 use Slowlyo\OwlAdmin\Renderers\Alert;
 use Slowlyo\OwlAdmin\Renderers\InputKV;
+use Slowlyo\OwlAdmin\Renderers\Tab;
+use Slowlyo\OwlAdmin\Renderers\Tabs;
 use Slowlyo\OwlAdmin\Renderers\TextControl;
-use Slowlyo\OwlAdmin\Controllers\AdminController;
 
-class SettingController extends AdminController
+final class SettingController extends AdminController
 {
     protected string $queryPath = 'system/settings';
 
     protected string $pageTitle = '系统设置';
 
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
     {
         $page = $this->basePage()->body([
-            Alert::make()->showIcon(true)->body("此处内容仅供演示, 设置项无实际意义，实际开发中请根据实际情况进行修改。"),
+            Alert::make()->showIcon(true)->body("useless"),
             $this->form(),
         ]);
 
         return $this->response()->success($page);
     }
 
-    public function form()
+    public function form(): \Slowlyo\OwlAdmin\Renderers\Form
     {
         return $this->baseForm()
             ->redirect('')
@@ -42,11 +44,11 @@ class SettingController extends AdminController
                         TextControl::make()->label('上传域名')->name('upload_domain'),
                         TextControl::make()->label('上传路径')->name('upload_path'),
                     ]),
-                ])
+                ]),
             );
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
     {
         $data = $request->only([
             'site_name',
