@@ -16,6 +16,12 @@ Route::group([
     $router->resource(name: 'videos/longer-transcode', controller: \App\Admin\Controllers\LongVideoController::class);
     $router->resource(name: 'videos/longer-uploads', controller: \App\Admin\Controllers\LongVideoUploadLogController::class);
     $router->resource(name: 'film/actors', controller: \App\Admin\Controllers\ActorController::class);
+    $router->post(uri: 'film/actors/quick', action: [\App\Admin\Controllers\ActorController::class, 'quickEdit']);
     $router->resource(name: 'film/categories', controller: \App\Admin\Controllers\CategoryController::class);
+    $router->post(uri: 'film/categories/quick', action: [
+        \App\Admin\Controllers\CategoryController::class,
+        'quickEdit',
+    ]);
     $router->resource(name: 'film/plot', controller: \App\Admin\Controllers\PlotController::class);
+    $router->resource(name: 'film/tags', controller: \App\Admin\Controllers\TagController::class);
 });

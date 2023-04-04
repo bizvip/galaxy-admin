@@ -11,7 +11,7 @@ return [
     'default_avatar' => '/admin/default-avatar.png',
 
     // 底部信息
-    'footer'         => '© 2023 <a href="https://heichan.cc" target="_blank">A.C.</a>',
+    'footer'         => '© 2023 AChang',
 
     'directory' => app_path('Admin'),
 

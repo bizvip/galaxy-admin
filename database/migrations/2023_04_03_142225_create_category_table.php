@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('name', 32)->unique()->nullable(false)->comment('分类名字');
             $table->unsignedInteger('sort')->default(new \Illuminate\Database\Query\Expression('0'))->comment('排序');
             $table->string('slug', 32)->unique()->nullable(false)->comment('唯一标识');
-            $table->unsignedBigInteger('item_total')
+            $table->unsignedBigInteger('items_total')
                 ->default(new \Illuminate\Database\Query\Expression(0))
                 ->comment('库内该分类影片总数');
             $table->datetime('created_at')->nullable(false)->comment('创建时间');
